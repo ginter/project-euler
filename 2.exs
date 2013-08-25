@@ -3,10 +3,15 @@ Code.require_file "fib.exs"
 defmodule EvenFibonacciNumbers do
   import Fib
 
+  @doc """
+  Finds sum of terms of fibonacci sequence up to limit that are even
+  """
   def sum(limit: limit), do: do_sum(fib(1), 1, limit)
 
   def do_sum(fibn, _n, limit) when fibn > limit, do: 0
+
   def do_sum(fibn, n, limit) when rem(fibn, 2) != 0, do: do_sum(fib(n+1), n+1, limit)
+
   def do_sum(fibn, n, limit), do: fibn + do_sum(fib(n+1),n+1, limit)
 end
 
